@@ -1,4 +1,5 @@
 const express = require("express");
+const logger = require("morgan");
 const mongojs = require("mongojs");
 const mongoose = require("mongoose");
 const db = require("./models");

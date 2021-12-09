@@ -2,12 +2,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const WorkoutSchema = new Schema({
-  name: {
-    type: String,
-    unique: true,
-    trim: true,
+  day: {
+    type: Date,
+    default: () => new Date(),
   },
-  exercise: [
+  exercises: [
     {
       type: Schema.Types.ObjectId,
       ref: "Exercise",
