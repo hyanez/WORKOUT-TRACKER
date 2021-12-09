@@ -31,3 +31,22 @@ router.get("/api/workouts", (req, res) => {
       res.status(500).json(err);
     });
 });
+
+//Updates workout by ID
+router.put("/api/workouts:id", (req, res) => {
+  db.Workout.updateOne(
+    {
+      _id: mongojs.ObjectId(req.params.id),
+    },
+    {
+      $set: { exercises: req.body },
+    },
+    (err, workoutDB) => {
+      if (err) {
+        console.log(err);
+      }
+
+      res.json(workoutDB);
+    }
+  );
+});
