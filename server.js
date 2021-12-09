@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 
 const databaseURL = "workout";
 const collections = ["exercises"];
-const workoutDB = mongojs(databaseUrl, collections);
+const workoutDB = mongojs(databaseURL, collections);
 
 app.use(logger("dev"));
 
