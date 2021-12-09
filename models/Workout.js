@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-const Scheme = mongoose.Schema;
+const Schema = mongoose.Schema;
 
-const WorkoutSchema = new mongoose.Schema({
+const WorkoutSchema = new Schema({
   name: {
     type: String,
     unique: true,
@@ -9,7 +9,7 @@ const WorkoutSchema = new mongoose.Schema({
   },
   exercise: [
     {
-      type: Schema.Types.ObjectID,
+      type: Schema.Types.ObjectId,
       ref: "Exercise",
     },
   ],
