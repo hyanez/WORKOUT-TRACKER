@@ -3,6 +3,8 @@ const logger = require("morgan");
 const mongojs = require("mongojs");
 const mongoose = require("mongoose");
 const db = require("./models");
+const htmlRoutes = require("./routes/htmlRoutes");
+const apiRoutes = require("./routes/apiRoutes");
 
 const app = express();
 
@@ -18,6 +20,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static("public"));
+
+app.use(apiRoutes);
+app.use(htmlRoutes);
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useNewUrlParser: true,

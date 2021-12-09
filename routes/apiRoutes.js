@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const { Exercise } = require("../models");
 const db = require("../models");
 
 //Gets all workouts in database
@@ -50,3 +49,28 @@ router.put("/api/workouts:id", (req, res) => {
     }
   );
 });
+
+//Post a workout to Workout database
+router.post("/api/workouts", ({ body }, res) => {
+  const workout = body;
+  db.exercises.insert(workout, (err, data) => {
+    if (err) {
+      console.log(err);
+    }
+    res.json(data);
+  });
+});
+
+//Get workouts in range
+router.get("/api/workouts/range", (req, res) => {
+  db.Workout.find({})
+    .then((workoutDB) => {
+      res.json(workoutDB);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+module.exports = router;
