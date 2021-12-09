@@ -8,3 +8,7 @@ routes.get("/", (req, res) => {
 routes.get("/exercise", (req, res) => {
   res.sendFile(path.join(_dirname, "../public/exercise.html"));
 });
+
+routes.get("/stats", (req, res) => {
+  res.sendFile(path.join(_dirname, "../public/stats.html"));
+});
